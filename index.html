@@ -409,13 +409,8 @@ button:hover {
 
   show = function(i){
     document.getElementById('word_text').innerHTML = dictionary[i].word;
-    
-    var define = "";
+    document.getElementById('definition').innerHTML = dictionary[i].def;
 
-    for (var n = 0; j < dictionary[i].def.length; n++) {
-      define += `<li class="item">${dictionary[i].def[n]}</li>`;
-    document.getElementById('definition').innerHTML = define;
-    }
     var list = "";
 
     for (var j = 0; j < dictionary[i].rel.length; j++) {
