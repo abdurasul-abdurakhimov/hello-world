@@ -64,6 +64,8 @@
   padding-left: 10px;
   font-size: 1.2rem;
   padding-right: 10px;
+  height: 77vh;
+  overflow-y: scroll;
 }
 
 #definition, #related {
@@ -173,6 +175,8 @@ button:hover {
   flex: 2;
   padding-left: 10px;
   font-size: 1rem;
+  height: 80vh;
+  overflow-y: scroll;
 }
 
 #word_list {
@@ -409,7 +413,15 @@ button:hover {
 
   show = function(i){
     document.getElementById('word_text').innerHTML = dictionary[i].word;
-    document.getElementById('definition').innerHTML = dictionary[i].def;
+    
+     var define = "";
+
+      for (var p = 0; p < dictionary[i].def.length; p++) {
+        define += "<li>" + dictionary[i].def[p] + "</li>";
+        document.getElementById('definition').innerHTML = define;
+      }
+    
+//     document.getElementById('definition').innerHTML = dictionary[i].def;
 
     var list = "";
 
