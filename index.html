@@ -413,9 +413,9 @@ button:hover {
     var define = "";
 
     for (var j = 0; j < dictionary[i].def.length; j++) {
-      list += `<li class="item">${dictionary[i].def[j]}</li>`;
+      define += `<li class="item">${dictionary[i].def[j]}</li>`;
     document.getElementById('definition').innerHTML = define;
-    }
+ 
     var list = "";
 
     for (var j = 0; j < dictionary[i].rel.length; j++) {
