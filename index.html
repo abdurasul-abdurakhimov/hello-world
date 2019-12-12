@@ -409,8 +409,15 @@ button:hover {
 
   show = function(i){
     document.getElementById('word_text').innerHTML = dictionary[i].word;
-    document.getElementById('definition').innerHTML = dictionary[i].def;
+    
+    var define = "";
 
+    for (var j = 0; j < dictionary[i].def.length; j++) {
+      list += `<li class="item">${dictionary[i].def[j]}</li>`;
+      document.getElementById('definition').innerHTML = define;
+    
+    document.getElementById('definition').innerHTML = dictionary[i].def;
+    }
     var list = "";
 
     for (var j = 0; j < dictionary[i].rel.length; j++) {
