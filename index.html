@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+  <title>Legal Theory | Course Glossary</title>
+
+  <style>
+  
+  body {
+  font-size: 0.9rem;
+  box-sizing: border-box;
+  font-family: 'Roboto', sans-serif;
+  margin: 0px;
+  padding: 0px;
+  background: #fff;
+}
+
+.main-header {
+  display: flex;
+  justify-content: space-between;
+  width: 100vw;
+  height: 50px;
+  align-items: center;
+  margin: auto auto;
+  background: #332b60;
+}
+
+.header {
+  padding-left: 20px;
+  color: white;
+  text-align: center;
+}
+
+.header span {
+  color: white;
+  font-style: normal;
+  font-weight: 900;
+  font-size: 1.9rem;
+}
+
+#header-link {
+  color: #FDFDFF;
+  text-decoration: none;
+  cursor: pointer;
+  font-weight: lighter;
+  font-size: 1rem;
+}
+
+.wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  margin: auto auto;
+}
+
+.wrapper::after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
+.words {
+  flex: 1;
+  background: #FDFDFF;
+  padding-top: 10px;
+  font-size: 1.1rem;
+  border-right: gainsboro 0.5px solid;
+  box-shadow: 0 1px 6px #ddd;
+}
+
+.word {
+  flex: 4;
+  padding-left: 50px;
+  font-size: 1.2rem;
+  padding-right: 50px;
+  height: 81vh;
+  overflow-y: scroll;
+}
+
+#definition, #related  {
+  display: block;
+  padding: 20px;
+  margin-top: -14px;
+  font-size: 0.9rem;
+  list-style-type: none;
+  text-align: justify;
+  box-shadow: 0 1px 6px #ddd;
+  background: #fff;
+}
+
+#word_list {
+  max-height: 82vh;
+  overflow-y: scroll;
+  color: #000;
+}
+
+#word_list li {
+  line-height: 3.5rem;
+  list-style-image: url(list.png);
+}
+
+li {
+  list-style-type: none;
+  line-height: 1.5rem;
+}
+
+#word_list li:hover {
+  cursor: pointer;
+  text-decoration: underline;
+  color: #332b60;
+}
+
+
+
+ul {
+  margin-left: 0px;
+}
+
+h3 {
+  font-size: 1.3rem;
+  display: block;
+  padding: 7px 14px;
+  color: #333;
+  background: #f8f9fa;
+  box-shadow: 0 1px 6px #ddd;
+}
+
+#search {
+  margin: 30px auto;
+  width: 15vw;
+  padding: 8px;
+  height: 8px;
+}
+
+button {
+  height: 27px;
+  background: #e83e8c;
+  color: white;
+  border: #e83e8c 1px solid;
+  border-radius: 4px;
+  margin-right: 30px;
+}
+
+button:hover {
+  background: #dc3545;
+  border: #dc3545 1px solid;
+}
+
+#copyright {
+  flex: 0 1 100%;
+  padding-right: 10px;
+  height: 5vh;
+  text-align: right;
+  color: #fff;
+  background: #332b60;
+  border-top: #ddd 0.5px solid;
+  align-items: center;
+  box-shadow: 0 1px 6px #ddd;
+}
+
+@media screen and (max-width: 768px) {
+  body {
+  font-size: 0.6rem;
+}
+
+.main-header {
+  display: flex;
+  flex-direction: row;
+  max-width: 99%;
+  height: 50px;
+  align-items: center;
+  
+}
+
+.header {
+  flex: 1;
+  color: white;
+  text-align: left;
+}
+
+#header-link {
+  color: #fff;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.wrapper {
+  display: flex;
+  width: 100%;
+  margin: auto auto;
+  border: 1px solid gray;
+}
+
+.wrapper::after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
+.words {
+  flex: 1;
+  background: #e9ebee;
+  padding-top: 10px;
+  font-size: 1rem;
+}
+
+.word {
+  flex: 2;
+  padding-left: 10px;
+  font-size: 1rem;
+  height: 80vh;
+  overflow-y: scroll;
+}
+
+#word_list {
+  max-height: 80vh;
+  overflow-y: scroll;
+}
+
+li {
+  list-style-type: none;
+  line-height: 2rem;
+}
+
+#word_list li:hover {
+  cursor: pointer;
+}
+
+ul {
+  margin-left: -10px;
+}
+
+h3 {
+  color: #332b60;
+}
+
+#search {
+  flex: 1;
+  width: 90px;
+  padding: 8px;
+  height: 8px;
+}
+}
+
+@media screen and (max-width: 450px) {
+  li {
+    list-style: circle;
+  }
+
+  #related {
+    list-style: none;
+  }
+}
+  </style>
+
+</head>
+<body>
+  <div class="main-header">
+  <div class="header">
+    <h1><a id="header-link" href="/"><span>LT |</span> GLOSSARY</a></h1>
+  </div>
+  <div class="search-function">
+    <input type="text" id="search" placeholder="Search...">
+    <button id="myBtn" onclick="search()">Go</button>
+  </div>
+  </div>
+  <div class="wrapper">
+    <div class="words">
+
+      <ul id="word_list"></ul>
+
+    </div>
+    <div class="word">
+      <h3 id="word_text"></h3>
+      <p id="definition"></p>
+
+      <h3>Related words:</h3>
+      <li id="related"></li>
+    </div>
+  <div id="copyright">
+    <p>Legal Theory Course <span>&copy;</span> 2019</p>
+  </div>
+</div>
+</body>
+</html>
+
+<script type="text/javascript">
+  var dictionary = [
+                    {
+                      word:"Aesthetics",
+                      def: ["a set of principles concerned with the nature and appreciation of beauty;", "Aesthetic considerations feature widely in science. Many scientists claim that aesthetic values guide their activities, motivate them to study nature, and even shape their attitude regarding the truth of a theory. Some scientists also regard the product of their intellectual activities, whether scientific theories, models, or mathematical proofs, as works of art. Interestingly, recent studies in neuropsychology have shown that exposure to beautiful equations activates the same area of the brain in mathematicians and scientists as exposure to beautiful pieces of art. (Aesthetics in Science | Milena Ivanova);"],
+                      rel:["Ethics", "Philosophy", "Art"]
+                    },
+                    {
+                      word: "Arbitrariness",
+                      def: ["Determined or founded on individual discretion, especially when based on one's opinion, judgment, or prejudice, rather than on fixed rules, procedures, or law. See also abuse of discretion. Absolute; despotic; completely unreasonable; lacking any rational basis;"],
+                      rel: ["'Good' laws", "Rationality"]
+                    },
+                    {
+                      word:"Axiology",
+                      def:["philosophical study of value;", "It is either the collective term for ethics and aesthetics;", "Axiological Basis for the Application of Law means 'morality driven' approach to law-making;"],
+                      rel:["Ethics", "Aesthetics", "Morality"]
+                    },
+                    {
+                      word: "Bloom's Taxonomy",
+                      def: ["a classification system used to define and distinguish different levels of human cognition—i.e., thinking, learning, and understanding;", "__________", "Bloom's taxonomy:", "       1) Familiarity with terminology: only familiar, but no actual knowledge;", "       2) Knowing meanings of terms: (a) denotatively and (b) connotatively; a) general description in natural language; b) more descriptive and content-specific (e.x. person as a legal term: Person is a subject of rights and obligations.) Rules of language: Syntax - sentence structure; Semantics - meaning of words; Pragmatics - uses of words (e.g. slangs, academic words - bring the language alive (humour) and the rule is: you speak to be understood). Information is not knowledge;", "       3) Application: the fields we can use the accumulated knowledge; how to apply the knowledge in concrete case;", "4) Analysis: this is what you can do only after the first 3 levels; analysis - detailed examination/investigation of elements;", "5) Evaluation: being able to give informed and educated opinion; decide what’s better and worse; suggesting improvements and changes;", "6) Creativity: not only having a position but also coming with innovation;"],
+                      rel: ["Substantiation", "Reasoning"]
+                    },
+                    {
+                      word:"Epistemology",
+                      def:["Epistemology is the branch of philosophy concerned with the theory of knowledge. Epistemology is the study of the nature of knowledge, justification, and the rationality of belief;"],
+                      rel:["Epistemic democracy", "Ontology", "Knowledge"]
+                    },
+                    {
+                      word: "Ethics",
+                      def: ["Ethics or moral philosophy is a branch of philosophy that involves systematizing, defending, and recommending concepts of right and wrong conduct. The field of ethics, along with aesthetics, concerns matters of value, and thus comprises the branch of philosophy called axiology;"],
+                      rel: ["Aesthetics", "Morality", "Logic"]
+                    },
+                    {
+                      word: "Frayer Model",
+                      def: ["The purpose of the Frayer Model (Frayer, 1969; Buehl, 2001) is to identify and define unfamiliar concepts and vocabulary. Students define a concept/word/term, describe its essential characteristics, provide examples of the idea and suggest non examples of the idea (knowing what a concept isn’t helps define what it is). This information is placed on a chart that is divided into four sections to provide a visual representation for students. The model prompts students to understand words within the larger context of a reading selection, as it asks students to analyse the concept/word (definition and characteristics) and then synthesise or apply this information by thinking of examples and non examples. It also activates prior knowledge of a topic and builds connections;", "__________", "Four main elements on Frayer's chart:", "1) Definition", "2) Characteristics/Facts", "3) Examples", "4) Non Examples"],
+                      rel: ["Epistemology", "Knowledge"]
+                    },
+                    {
+                      word:"'Good' law",
+                      def:["Advanced view:", "- In substance: rules should be ‘sufficiently’ clear, general, accessible, internally consistent, possible, stable over time, prospective, and applied equally by all legal officials (Fuller, 1969);", "- In format: enacted according to the due process, valid procedures"],
+                      rel:["Prospective", "Accessible", "Equality"]
+                    },
+                    {
+                      word:"Legal Categories",
+                      def:["a word or phrase that only appears in legal language (“abuse of process”, “criminal responsibility”), or a word or phrase that forms part of ordinary language but has a special meaning in legal language (“consideration”);"],
+                      rel:["Legal terminology"]
+                    },
+                    {
+                      word: "Legal Philosophy",
+                      def: ["a branch of philosophy that examines the nature of law and law's relationship to other systems of norms, especially ethics and political philosophy. It asks questions like 'What is law?', 'What are the criteria for legal validity?', and 'What is the relationship between law and morality?';"],
+                      rel: ["Legal Theory", "Political philosophy"]
+                    },
+                    {
+                      word: "Legal Theory",
+                      def: ["Legal theory is the study of law. The sources and methods are multidisciplinary;", "Legal theory refers to the principle under which a litigant proceeds, or on which a litigant bases its claims or defenses in a case. It can also be the law or body of rules of conduct which are of binding legal force and effect, prescribed, recognized, and enforced by a controlling authority;"],
+                      rel: ["Legal Philosophy", "Positivism", "Naturalist law"]
+                    },
+                    {
+                      word: "Legitimacy",
+                      def: ["The legal legitimacy is the belief that the law and agents of the law are rightful holders of authority; that they have the right to dictate appropriate behaviour and are entitled to be obeyed; and that laws should be obeyed, simply because, that is the right thing to do;", "For the law to be legitimate, it should be compatible with the customary norms of that society;", "__________", "Possible (but not compulsory) path to legitimate laws:", "Uses -> Habits -> Practice -> Traditions -> Customs -> Rule (law);"],
+                      rel: ["Validity", "Enforceability", "Authority"]
+                    },
+                    {
+                      word:"Norm",
+                      def:["Legal norms are binding rules, or norms, of conduct that organisations of sovereign power promulgate and enforce in order to regulate social relations. Legal norms determine the rights and duties of individuals who are the subjects of legal relations within the governing jurisdiction at a given point in time;", "Norms have hypothesis and sanctions;"],
+                      rel:["Regulation", "Rule", "Sanction"]
+                    },
+                    {
+                      word: "Ontology",
+                      def: ["a set of concepts and categories in a subject area or domain that shows their properties and the relations between them;"],
+                      rel: ["Philosophy of Science", "Applied ontology", "Hauntology"]
+                    },
+                    {
+                      word: "Philosophy of Science",
+                      def: ["Every science needs philosophy behind it;", "__________", "Philosophy of science:", "1) Ontological aspect (what things are involved);", "2) Epistemology (ways to know; procedures and methodologies of obtaining knowledge);", "3) Politics;", "4) Ethics;", "5) Aesthetics;"],
+                      rel: ["Philosophy", "Ontology", "Epistemology", "Politics", "Ethics", "Aesthetics"]
+                    },
+                    {
+                      word: "Procedural Law",
+                      def: ["Procedural law, adjective law, in some jurisdictions referred to as remedial law, or rules of court comprises the rules by which a court hears and determines what happens in civil, lawsuit, criminal or administrative proceedings;", "The rules are designed to ensure a fair and consistent application of due process (in the U.S.) or fundamental justice (in other common law countries) to all cases that come before a court;"],
+                      rel: ["Legal technicality", "Due process", "Substantial law"]
+                    },
+                    {
+                      word:"Rationality",
+                      def:["Quality or state of being rational: being based on or agreeable to reason and logic.", "'Instrumental' and 'value rationality' are terms scholars use to identify two ways human reason when correlating group behaviour to maintain social life. Instrumental rationality recognizes means that 'work' efficiently to achieve ends. Value rationality recognizes ends that are 'right,' legitimate in themselves;", "These two ways of reasoning seem to operate separately. Efficient means are recognized inductively in heads or brains or minds. Legitimate ends are felt deductively in hearts or guts or souls. Instrumental rationality provides intellectual tools—scientific and technological facts and theories—that appear to be impersonal, value-free means. Value rationality provides legitimate rules—moral valuations—that appear to be emotionally satisfying, fact-free ends. Every society maintains itself by correlating instrumental means with value rational ends. Together they make humans rational;", "Those two labels were originally suggested by German sociologist Max Weber;"],
+                      rel:["Reason", "Legal-rational Authority", "Logic"]
+                    },
+                    {
+                      word: "Regulation",
+                      def: ["Anything that applies to controlling human behaviour;", "Controlling an activity or process, usually by means of rules;"],
+                      rel: ["Rule", "Norm", "Law"]
+                    },
+                    {
+                      word: "Regulatory Systems",
+                      def: ["A system of regulations that intend to control human behaviour through:", "Laws", "Social norms", "Morals"],
+                      rel: ["Rule", "Norm", "Law"]
+                    },
+                    {
+                      word: "Relativism",
+                      def: ["Relativism is the theory that holds that morality is relative to the norms of one's culture. That is, whether an action is right or wrong depends on the moral norms of the society in which it is practiced. The same action may be morally right in one society but be morally wrong in another."],
+                      rel: ["Subjectivism", "Objectivism"]
+                    },
+                    {
+                      word:"Report",
+                      def:["Report is to explain the main concepts;", "Components are always identifiable: (a) Author will communicate what is the research problem. (b) Having detected the problem, he/she will have a purpose of the research. (c) Methodology and reasoning behind the topic. (d) Conclusions;"],
+                      rel:["Research", "Methodology", "Analysis"]
+                    },
+                    {
+                      word: "Rule",
+                      def: ["(noun) An established standard, guide, or regulation governing conduct, procedure, or action;", "Unlike norms, rules are only descriptive;"],
+                      rel: ["Norm", "Regulation", "Law"]
+                    },
+                    {
+                      word: "Rule of Law",
+                      def: ["Rule of law, the mechanism, process, institution, practice, notion, doctrine or norm that supports the equality of all citizens before the law, secures a nonarbitrary form of government, and more generally prevents the arbitrary use of power;", "According to A.V.Dicey, rule of law also includes procedural justice;", "__________", "What are ways to understand the ROL at the international level? (Chesterman, Simon, 'An international rule of law?.' The American Journal of Comparative Law 56, no. 2 (2008): 331362.)", "‘…Three possible meanings.", "- First, the “international rule of law” may be understood as the application of rule of law principles to relations between States and other subjects of international law.", "- Secondly, the “rule of international law” could privilege international law over national law, establishing, for example, the primacy of human rights covenants over domestic legal arrangements.", "- Thirdly, a “global rule of law” might denote the emergence of a normative regime that touches individuals directly without formal mediation through existing national institutions…’"],
+                      rel: ["Arbitrariness", "Procedural Justice"]
+                    },
+                    {
+                      word:"Sanction",
+                      def:["Sanctions, in law and legal definition, are penalties or other means of enforcement used to provide incentives for obedience with the law, or with rules and regulations. ", "In general, sanction is simply a resonse: it can be both positive and negative;"],
+                      rel:["Punishment"]
+                    },
+                    {
+                      word: "Subjectivism",
+                      def: ["An ethical theory holding that personal attitudes and feelings are the sole determinants of moral and aesthetic values"],
+                      rel: ["Relativism", "Universalism", "Objectivism"]
+                    },
+                    {
+                      word: "Substantive Law",
+                      def: ["Substantive law is the set of laws (value-driven) that governs how members of a society are to behave. It is contrasted with procedural law, which is the set of procedures for making, administering, and enforcing substantive law;"],
+                      rel: ["Procedural law", "Norm", "Rule"]
+                    },
+                    {
+                      word: "Validity",
+                      def: ["Binding; possessing legal force or strength; legally sufficient;", "Validness - essential elements of law drafting in place;", "Valid - following legal procedure (due process);"],
+                      rel: ["Legitimacy", "Due process", "'Good' law"]
+                    }
+  ];
+
+  // Fill the dictionary with words
+  init = function(){
+    for (var i = 0; i < dictionary.length; i++) {
+      document.getElementById('word_list').innerHTML += "<li onclick='show("+ i +")'>" + dictionary[i].word + "</li>";
+      }
+  }
+
+  // call the init function when page loads
+  init();
+
+  show = function(i){
+    document.getElementById('word_text').innerHTML = dictionary[i].word;
+    
+     var define = "";
+
+      for (var p = 0; p < dictionary[i].def.length; p++) {
+        define += "<li>" + dictionary[i].def[p] + "</li>";
+        document.getElementById('definition').innerHTML = define;
+      }
+    
+//     document.getElementById('definition').innerHTML = dictionary[i].def;
+
+    var list = "";
+
+    for (var j = 0; j < dictionary[i].rel.length; j++) {
+      list += `<li class="item">${dictionary[i].rel[j]}</li>`;
+      document.getElementById('related').innerHTML = list;
+    }
+  }
+  // show first word in the dictionary when page loads
+    show(0);
+
+  // search functionality
+  search = function() {
+    query = document.getElementById('search').value.toLowerCase()
+    console.log(query)
+
+    if (query =="") {
+      return;
+    }
+
+    found = -1; // initialize found to false
+
+    for (var i = 0; i < dictionary.length; i++) {
+      if (query == dictionary[i].word.toLowerCase()) {
+        found = i;
+        break;
+      } else {
+        document.getElementById('word_text').innerHTML = "Word not found";
+        document.getElementById('definition').innerHTML = "The word you entered is not found in our glossary";
+        document.getElementById('related').innerHTML = "No related terms";
+      }
+    }
+    if (found >=0) {
+      show(found);
+    }
+  }
+
+</script>
